@@ -21,6 +21,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "usb_host.h"
+#include "drvLeds.h"
+#include "upgrated_heartbeat.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -60,7 +62,7 @@ static void MX_I2C1_Init(void);
 static void MX_I2S3_Init(void);
 static void MX_SPI1_Init(void);
 void MX_USB_HOST_Process(void);
-void Heartbeat(uint32_t period, uint32_t DutyCycle);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -116,7 +118,13 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-    Heartbeat(1000, 300);
+    Heartbeat(1000, 300, LED_GREEN);
+    HAL_Delay(400);
+    Heartbeat(1000, 300, LED_RED);
+    HAL_Delay(400);
+    Heartbeat(1000, 300, LED_Blue);
+    HAL_Delay(400);
+    Heartbeat(1000, 300, LED_Orange);
 
   }
   /* USER CODE END 3 */
@@ -125,14 +133,7 @@ int main(void)
 
 
 /* USER CODE BEGIN 3 */
-void Heartbeat(uint32_t period, uint32_t DutyCycle){
 
-	HAL_GPIO_WritePin(GPIOD, LD5_Pin, GPIO_PIN_SET);
-	HAL_Delay(DutyCycle);
-	HAL_GPIO_WritePin(GPIOD, LD5_Pin, GPIO_PIN_RESET);
-	HAL_Delay(period-DutyCycle);
-
-};
 /* USER CODE END 3 */
 
 
