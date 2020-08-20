@@ -16,5 +16,7 @@ typedef enum {
 	LED_Orange =  LD3_Pin
 }leds_t;
 
+void LEDs_Turn_ON (leds_t LedColor);
+void LEDs_Turn_OFF(leds_t LedColor);
 
 #endif /* DRVLEDS_H_ */
