@@ -9,9 +9,9 @@
 
 void Heartbeat(uint32_t period, uint32_t DutyCycle, leds_t LedColor){
 
-	HAL_GPIO_WritePin(GPIOD, LedColor, GPIO_PIN_SET);
+	LEDs_Turn_ON(LedColor);
 	HAL_Delay(DutyCycle);
-	HAL_GPIO_WritePin(GPIOD, LedColor, GPIO_PIN_RESET);
+	LEDs_Turn_OFF(LedColor);
 	HAL_Delay(period-DutyCycle);
 };
 
