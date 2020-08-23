@@ -23,6 +23,8 @@
 #include "usb_host.h"
 #include "drvLeds.h"
 #include "upgrated_heartbeat.h"
+#include "MThHeardbeat.h"
+#include "RunningLED.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -117,9 +119,10 @@ int main(void)
     MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
-
-    Heartbeat(1000, 300, LED_GREEN|LED_RED|LED_Blue|LED_Orange);
-    HAL_Delay(400);
+    RunningLEDs(1000, 400);
+    MThHeartbeat (LED_GREEN, 100, 500);
+    //  Heartbeat(1000, 300, LED_GREEN|LED_RED|LED_Blue|LED_Orange);
+    //HAL_Delay(400);
 
   }
   /* USER CODE END 3 */
