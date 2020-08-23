@@ -17,36 +17,41 @@ typedef enum {
 }timeState_t;
 
 static timeState_t curentlyState = LEDs_State_ON;
-static IsItTime = 0;
+static uint32_t StartTime;
 
-void MThHeartbeat (leds_t LedColor){
+void MThHeartbeat (leds_t LedColor, uint32_t DutyCycle, uint32_t period){
 
+	static uint32_t ItTime = 0;
 	timeState_t NextState = curentlyState;
+
 	switch(curentlyState){
 	case LEDs_State_ON:
+
 		LEDs_Turn_ON (LedColor);
+		StartTime = GetCurrentTime();
 		NextState = LEDs_WaitingOFF;
 		break;
 	case LEDs_WaitingOFF:
-		MyDelay(IsItTime);
-		NextState = LEDs_State_OFF;
+		ItTime = SysTime_isItTime(StartTime, DutyCycle);
+		if(ItTime){
+			NextState = LEDs_State_OFF;
+		}
 		break;
 	case LEDs_State_OFF:
 		LEDs_Turn_OFF(LedColor);
+		StartTime = GetCurrentTime();
 		NextState = LEDs_waitingON;
 		break;
 	case LEDs_waitingON:
-		MyDelay(IsItTime);
-		NextState = LEDs_State_ON;
+		ItTime = SysTime_isItTime(StartTime, period - DutyCycle);
+				if(ItTime){
+					NextState = LEDs_State_ON;
+				}
 		break;
 	default: curentlyState = LEDs_State_OFF;
 	}
 	curentlyState = NextState;
 };
 
-void MyDelay(int time){
 
-	while(time){
-		time--;
-	}
-}
+
