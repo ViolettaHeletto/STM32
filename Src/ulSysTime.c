@@ -5,6 +5,7 @@
  *      Author: Violetta
  */
 #include "ulSysTime.h"
+#include "stdlib.h"
 
 uint32_t GetCurrentTime(){
 
@@ -13,8 +14,9 @@ uint32_t GetCurrentTime(){
 
 uint32_t SysTime_isItTime(uint32_t StartTime, int delay){
 	uint32_t currentTime = GetCurrentTime();
+	uint32_t res = currentTime - StartTime;
 	uint8_t returnValue = 0;
-	if(currentTime - StartTime >= delay)
+	if( abs(res) >= delay)
 	{
 		returnValue = 1;
 	}
