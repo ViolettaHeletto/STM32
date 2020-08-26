@@ -21,10 +21,10 @@ typedef enum{
 	BUTTON_RELEASED,
 	BUTTON_PRESSED,
 
-}stateButton_t;
+}ButtonState_t;
 
 
-//stateButton_t Button_GetKeyState(buttons_t KeyName);
+ButtonState_t Button_GetKeyState(buttons_t KeyName);
 void Button_run();
 
 #endif /* BUTTON_H_ */

@@ -10,11 +10,12 @@
 #include "main.h"
 
 typedef enum {
-	LED_GREEN =  LD4_Pin,
-	LED_RED =  LD5_Pin,
-	LED_Blue = LD6_Pin,
-	LED_Orange =  LD3_Pin
+	LED_GREEN = GPIO_PIN_12,
+	LED_RED = GPIO_PIN_14,
+	LED_Blue = GPIO_PIN_15,
+	LED_Orange = GPIO_PIN_13
 }leds_t;
+
 
 void LEDs_Turn_ON (leds_t LedColor);
 void LEDs_Turn_OFF(leds_t LedColor);

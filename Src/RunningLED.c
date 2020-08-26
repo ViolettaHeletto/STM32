@@ -7,7 +7,7 @@
 
 #include "RunningLED.h"
 
-leds_t ColourLED[4] = { LED_RED, LED_Blue, LED_GREEN, LED_Orange};
+leds_t ColourLED[4] = { LED_GREEN, LED_RED, LED_Blue, LED_Orange};
 
 typedef enum{
   STATE_TURN_LED_ON,
